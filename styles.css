@@ -331,11 +331,41 @@ body.is-unlocked .hero-inner {
   display: grid;
   place-items: center;
   width: min(500px, 86vw);
+  aspect-ratio: 1.58;
   border: 0;
+  border-radius: 10px;
   padding: 0;
   color: inherit;
-  background: transparent;
+  background:
+    radial-gradient(circle at 50% 56%, #9c6ba0 0 6%, transparent 6.5%),
+    radial-gradient(circle at 39% 34%, #c777a1 0 2.2%, transparent 2.5%),
+    radial-gradient(circle at 45% 27%, #e69aa8 0 2.8%, transparent 3.1%),
+    radial-gradient(circle at 53% 31%, #d58a9a 0 2.4%, transparent 2.8%),
+    linear-gradient(146deg, transparent 0 49%, rgba(107, 74, 43, 0.28) 49.4% 50.4%, transparent 51%),
+    linear-gradient(214deg, transparent 0 49%, rgba(107, 74, 43, 0.28) 49.4% 50.4%, transparent 51%),
+    linear-gradient(33deg, transparent 0 49%, rgba(107, 74, 43, 0.22) 49.4% 50.4%, transparent 51%),
+    linear-gradient(327deg, transparent 0 49%, rgba(107, 74, 43, 0.22) 49.4% 50.4%, transparent 51%),
+    linear-gradient(180deg, #efe0bf, #d6b886);
+  box-shadow: 0 26px 42px rgba(65, 41, 29, 0.2);
   cursor: pointer;
+}
+
+.open-letter::before {
+  content: "";
+  position: absolute;
+  left: 38%;
+  top: 22%;
+  width: 25%;
+  height: 30%;
+  background:
+    linear-gradient(85deg, transparent 0 47%, #5f805e 48% 52%, transparent 53%),
+    radial-gradient(ellipse at 24% 34%, #8ca186 0 9%, transparent 10%),
+    radial-gradient(ellipse at 68% 45%, #789177 0 10%, transparent 11%),
+    radial-gradient(circle at 34% 18%, #c777a1 0 8%, transparent 9%),
+    radial-gradient(circle at 56% 8%, #e69aa8 0 10%, transparent 11%),
+    radial-gradient(circle at 70% 24%, #d58a9a 0 8%, transparent 9%);
+  opacity: 0.9;
+  transform: rotate(-7deg);
 }
 
 .open-letter:focus-visible {
@@ -345,6 +375,8 @@ body.is-unlocked .hero-inner {
 }
 
 .letter-image {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100%;
   height: auto;

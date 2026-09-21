@@ -7,6 +7,7 @@ const flowerCurtain = document.querySelector("#flowerCurtain");
 const surpriseHub = document.querySelector("#surpriseHub");
 const surpriseCards = document.querySelectorAll(".surprise-card");
 const backButtons = document.querySelectorAll("[data-back-to-hub]");
+const letterBackButtons = document.querySelectorAll("[data-back-to-letter]");
 const giftSections = document.querySelectorAll(".gift-section");
 const videoSection = document.querySelector("#videoSection");
 const video = document.querySelector("#birthdayVideo");
@@ -34,9 +35,10 @@ let opened = false;
 let choosingGift = false;
 
 function resizeCanvas() {
-  canvas.width = window.innerWidth * window.devicePixelRatio;
-  canvas.height = window.innerHeight * window.devicePixelRatio;
-  ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+  const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+  canvas.width = window.innerWidth * ratio;
+  canvas.height = window.innerHeight * ratio;
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 }
 
 function getEnvelopeCenter() {
@@ -50,7 +52,7 @@ function getEnvelopeCenter() {
 function createFlowers() {
   const center = getEnvelopeCenter();
   const colors = ["#c98884", "#f0d4a5", "#b9a07b", "#a9636a", "#e7c894", "#73805c", "#d7a0ad", "#efc0c7"];
-  const count = Math.min(460, Math.max(240, Math.floor(window.innerWidth / 3.4)));
+  const count = Math.min(280, Math.max(140, Math.floor(window.innerWidth / 5.2)));
 
   flowers = Array.from({ length: count }, (_, index) => {
     const angle = Math.random() * Math.PI * 2;
@@ -65,15 +67,15 @@ function createFlowers() {
       vy: Math.sin(angle) * power - 6.5 - Math.random() * 6.2,
       gravity: 0.068 + Math.random() * 0.05,
       drag: 0.989 + Math.random() * 0.006,
-      size: isLargeBloom ? 30 + Math.random() * 34 : 14 + Math.random() * 25,
-      petals: Math.random() > 0.25 ? 5 : 6,
+      size: isLargeBloom ? 36 + Math.random() * 38 : 18 + Math.random() * 28,
+      petals: Math.random() > 0.35 ? 5 : 4,
       rotation: Math.random() * Math.PI * 2,
       spin: -0.045 + Math.random() * 0.09,
       color: colors[Math.floor(Math.random() * colors.length)],
       center: Math.random() > 0.18 ? "#a77945" : "#70442e",
       delay,
       age: 0,
-      life: 4700 + Math.random() * 1900
+      life: 3900 + Math.random() * 1500
     };
   });
 }
@@ -90,10 +92,6 @@ function drawPaperFlower(flower, alpha) {
     ctx.fillStyle = flower.color;
     ctx.beginPath();
     ctx.ellipse(flower.size * 0.42, 0, flower.size * 0.52, flower.size * 0.26, 0, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = "rgba(255, 255, 255, 0.22)";
-    ctx.beginPath();
-    ctx.ellipse(flower.size * 0.28, -flower.size * 0.04, flower.size * 0.22, flower.size * 0.09, 0, 0, Math.PI * 2);
     ctx.fill();
     ctx.restore();
   }
@@ -199,7 +197,7 @@ function openGift() {
 
   burstFlowers();
   playBirthdaySong();
-  window.setTimeout(revealLetter, 4300);
+  window.setTimeout(revealLetter, 3400);
 }
 
 openLetter.addEventListener("click", openGift);
@@ -254,6 +252,16 @@ backButtons.forEach((button) => {
     voiceAudio.pause();
     document.body.classList.remove("is-presenting-gift");
     document.body.classList.add("is-choosing-gift");
+    giftSections.forEach((section) => section.classList.remove("is-active"));
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  });
+});
+
+letterBackButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    video.pause();
+    voiceAudio.pause();
+    document.body.classList.remove("is-presenting-gift", "is-choosing-gift", "is-curtain-sweeping");
     giftSections.forEach((section) => section.classList.remove("is-active"));
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   });

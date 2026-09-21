@@ -331,41 +331,17 @@ body.is-unlocked .hero-inner {
   display: grid;
   place-items: center;
   width: min(500px, 86vw);
-  aspect-ratio: 1.58;
   border: 0;
   border-radius: 10px;
   padding: 0;
   color: inherit;
-  background:
-    radial-gradient(circle at 50% 56%, #9c6ba0 0 6%, transparent 6.5%),
-    radial-gradient(circle at 39% 34%, #c777a1 0 2.2%, transparent 2.5%),
-    radial-gradient(circle at 45% 27%, #e69aa8 0 2.8%, transparent 3.1%),
-    radial-gradient(circle at 53% 31%, #d58a9a 0 2.4%, transparent 2.8%),
-    linear-gradient(146deg, transparent 0 49%, rgba(107, 74, 43, 0.28) 49.4% 50.4%, transparent 51%),
-    linear-gradient(214deg, transparent 0 49%, rgba(107, 74, 43, 0.28) 49.4% 50.4%, transparent 51%),
-    linear-gradient(33deg, transparent 0 49%, rgba(107, 74, 43, 0.22) 49.4% 50.4%, transparent 51%),
-    linear-gradient(327deg, transparent 0 49%, rgba(107, 74, 43, 0.22) 49.4% 50.4%, transparent 51%),
-    linear-gradient(180deg, #efe0bf, #d6b886);
-  box-shadow: 0 26px 42px rgba(65, 41, 29, 0.2);
+  background: transparent;
+  box-shadow: none;
   cursor: pointer;
 }
 
 .open-letter::before {
-  content: "";
-  position: absolute;
-  left: 38%;
-  top: 22%;
-  width: 25%;
-  height: 30%;
-  background:
-    linear-gradient(85deg, transparent 0 47%, #5f805e 48% 52%, transparent 53%),
-    radial-gradient(ellipse at 24% 34%, #8ca186 0 9%, transparent 10%),
-    radial-gradient(ellipse at 68% 45%, #789177 0 10%, transparent 11%),
-    radial-gradient(circle at 34% 18%, #c777a1 0 8%, transparent 9%),
-    radial-gradient(circle at 56% 8%, #e69aa8 0 10%, transparent 11%),
-    radial-gradient(circle at 70% 24%, #d58a9a 0 8%, transparent 9%);
-  opacity: 0.9;
-  transform: rotate(-7deg);
+  content: none;
 }
 
 .open-letter:focus-visible {
@@ -386,7 +362,7 @@ body.is-unlocked .hero-inner {
 }
 
 .letter-image.is-opening {
-  animation: envelopeDissolveOpen 1150ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: envelopeSoftOpen 820ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .envelope {
@@ -992,6 +968,7 @@ body.waiting-letter .music-widget {
 
 .music-icon-button:hover,
 .back-button:hover,
+.letter-back-button:hover,
 .cake-actions button:hover,
 .down-button:hover {
   transform: translateY(-3px);
@@ -1159,6 +1136,7 @@ body.waiting-letter .music-widget {
 
 body.is-unlocked .surprise-section .section-kicker,
 body.is-unlocked .surprise-section h2,
+body.is-unlocked .surprise-section .letter-back-button,
 body.is-unlocked .surprise-card,
 .gift-section.is-active .section-kicker,
 .gift-section.is-active h2,
@@ -1170,13 +1148,19 @@ body.is-unlocked .surprise-card,
 .gift-section.is-active .wish-panel,
 .gift-section.is-active .wish-panel textarea,
 .gift-section.is-active .cake-actions button,
-.gift-section.is-active .back-button {
+.gift-section.is-active .back-button,
+.gift-section.is-active .letter-back-button {
   animation: textRise 760ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 body.is-unlocked .surprise-section h2,
 .gift-section.is-active h2 {
   animation-delay: 100ms;
+}
+
+body.is-unlocked .surprise-section .letter-back-button,
+.gift-section.is-active .letter-back-button {
+  animation-delay: 150ms;
 }
 
 body.is-unlocked .surprise-card:nth-child(1),
@@ -1228,9 +1212,16 @@ body.is-unlocked .surprise-card:nth-child(3) {
   width: min(980px, 100%);
 }
 
-.back-button {
-  min-height: 40px;
+.gift-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 18px;
+}
+
+.back-button,
+.letter-back-button {
+  min-height: 40px;
   border: 0;
   border-radius: 999px;
   padding: 0 15px;
@@ -1239,6 +1230,17 @@ body.is-unlocked .surprise-card:nth-child(3) {
   font-weight: 900;
   cursor: pointer;
   box-shadow: 0 12px 24px rgba(112, 68, 46, 0.18);
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.surprise-shell > .letter-back-button {
+  margin: -6px 0 20px;
+}
+
+.letter-back-button {
+  color: #4b3024;
+  background: rgba(255, 248, 234, 0.72);
+  border: 1px solid rgba(95, 64, 35, 0.18);
 }
 
 .video-shell h2 {
@@ -1714,23 +1716,20 @@ body.is-unlocked .surprise-card:nth-child(3) {
   }
 }
 
-@keyframes envelopeDissolveOpen {
+@keyframes envelopeSoftOpen {
   0% {
     opacity: 1;
     transform: translateY(0) rotate(-1deg) scale(1);
-    filter: blur(0) saturate(1) drop-shadow(0 28px 38px rgba(65, 41, 29, 0.24));
   }
 
   42% {
-    opacity: 0.18;
-    transform: translateY(-6px) rotate(0.5deg) scale(0.97);
-    filter: blur(8px) saturate(0.78) drop-shadow(0 18px 28px rgba(65, 41, 29, 0.12));
+    opacity: 0.46;
+    transform: translateY(-7px) rotate(0.5deg) scale(0.99);
   }
 
   100% {
     opacity: 1;
-    transform: translateY(-14px) rotate(0deg) scale(1.035);
-    filter: blur(0) saturate(1.04) drop-shadow(0 34px 44px rgba(65, 41, 29, 0.25));
+    transform: translateY(-13px) rotate(0deg) scale(1.02);
   }
 }
 

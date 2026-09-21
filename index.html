@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>สุขสันต์วันเกิดนะเด็กอิม</title>
+    <meta
+      name="description"
+      content="จดหมายวันเกิดเล็ก ๆ ที่ตั้งใจทำให้คนพิเศษ"
+    />
+    <link rel="preload" as="image" href="assets/birthday-letter-bg.png" />
+    <link rel="preload" as="image" href="assets/closed-envelope.png" />
+    <link rel="preload" as="image" href="assets/watercolor-letter.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="waiting-letter">
+    <div class="flower-curtain" id="flowerCurtain" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="page-flora" aria-hidden="true">
+      <span class="corner-bloom corner-bloom-one"></span>
+      <span class="corner-bloom corner-bloom-two"></span>
+      <span class="corner-bloom corner-bloom-three"></span>
+      <span class="corner-bloom corner-bloom-four"></span>
+      <span class="dust dust-one"></span>
+      <span class="dust dust-two"></span>
+      <span class="dust dust-three"></span>
+      <span class="bug bug-one"></span>
+      <span class="bug bug-two"></span>
+    </div>
+    <main class="birthday-page">
+      <section class="hero" aria-label="กล่องจดหมายวันเกิด">
+        <div class="ambient" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="corner-flora" aria-hidden="true">
+          <span class="corner-bloom corner-bloom-one"></span>
+          <span class="corner-bloom corner-bloom-two"></span>
+          <span class="corner-bloom corner-bloom-three"></span>
+          <span class="corner-bloom corner-bloom-four"></span>
+          <span class="dust dust-one"></span>
+          <span class="dust dust-two"></span>
+          <span class="dust dust-three"></span>
+          <span class="bug bug-one"></span>
+          <span class="bug bug-two"></span>
+        </div>
+
+        <div class="hero-inner">
+          <div class="mail-stage" id="mailStage">
+            <div class="open-letter" id="openLetter" role="button" tabindex="0" aria-label="เปิดจดหมายวันเกิด">
+              <img class="letter-image" src="assets/closed-envelope.png" alt="" aria-hidden="true" />
+            </div>
+
+          </div>
+
+          <article class="letter-card" id="letterCard" aria-live="polite">
+            <div class="letter-flora" aria-hidden="true">
+              <span class="letter-sprig sprig-one"></span>
+              <span class="letter-sprig sprig-two"></span>
+              <span class="letter-sprig sprig-three"></span>
+              <span class="letter-sprig sprig-four"></span>
+            </div>
+            <p class="letter-date">For my favorite person</p>
+            <h2>happy birthday to คนพิเศษของพี่ไบร์ท </h2>
+            <div class="letter-copy">
+              <p>
+                สุขสันต์วันเกิดนะน้องอิม ขอให้วันนี้เป็นวันที่เธอยิ้มได้เยอะ ๆ
+                เพราะสำหรับพี่ เธอคือคนที่สมควร ได้รับสิ่งดี ๆ มากที่สุดเสมอเลย
+              </p>
+              <p>
+                โตขึ้นอีกปีแล้วนะ ขอให้มีแต่เรื่องราวดีๆ และสิ่งดีๆเข้ามาคิดหวังสิ่งไหนก็ขอให้สมหวังดังปรารถนา เกรด A ทุกวิชาเลย
+              </p>
+              <p>
+                ปีนี้ขอให้เธอมีความสุข แข็งแรง ได้ทำสิ่งที่อยากทำ และไม่ว่าจะเหนื่อยแค่ไหน ขอให้รู้ไว้ว่ายังมีพี่
+                ที่คอยอยู่ข้างๆเธอ อยากดูแลเธอ และอยากเติบโตไปกับเธอเสมอนะน้องอิม 
+              </p>
+              <p class="signature">รักน้องมาก ๆ นะ</p>
+            </div>
+            <button class="down-button" id="watchButton" type="button">
+              <span>เลือกของขวัญต่อไป</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 5v14m0 0 6-6m-6 6-6-6" />
+              </svg>
+            </button>
+
+          </article>
+        </div>
+      </section>
+
+      <section class="surprise-section" id="surpriseHub" aria-label="เลือกของขวัญวันเกิด">
+        <div class="surprise-shell">
+          <p class="section-kicker">Choose a little gift</p>
+          <h2>อยากเปิดของขวัญชิ้นไหนก่อนดี</h2>
+          <div class="surprise-grid">
+            <button class="surprise-card" type="button" data-target="videoSection">
+              <span class="surprise-icon">▶</span>
+              <span>วิดีโอ</span>
+            </button>
+            <button class="surprise-card" type="button" data-target="voiceSection">
+              <span class="surprise-icon">♪</span>
+              <span>เสียงอวยพร</span>
+            </button>
+            <button class="surprise-card" type="button" data-target="cakeSection">
+              <span class="surprise-icon">✦</span>
+              <span>เป่าเค้ก</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="video-section gift-section" id="videoSection" aria-label="คลิปวันเกิด">
+        <div class="video-shell">
+          <button class="back-button" type="button" data-back-to-hub>กลับไปเลือกของขวัญ</button>
+          <div class="section-kicker">One more surprise</div>
+          <h2>คลิปที่พี่ตัดไว้ให้อิม</h2>
+          <div class="video-frame">
+            <video id="birthdayVideo" controls playsinline preload="metadata" poster="assets/paper-flowers-bg.png">
+              <source src="assets/hbd.mp4" type="video/mp4" />
+            </video>
+            <div class="video-fallback" id="videoFallback">
+              <p>วางไฟล์คลิปชื่อ <strong>hbd.mp4</strong> ไว้ในโฟลเดอร์ assets</p>
+              <label class="upload-button" for="localVideo">ลองเปิดคลิปจากเครื่องนี้</label>
+              <input id="localVideo" type="file" accept="video/*" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="voice-section gift-section" id="voiceSection" aria-label="เสียงอวยพรวันเกิด">
+        <div class="voice-shell">
+          <button class="back-button" type="button" data-back-to-hub>กลับไปเลือกของขวัญ</button>
+          <p class="section-kicker">A voice for you</p>
+          <h2>เสียงอวยพรที่อยากให้เธอฟัง</h2>
+          <div class="voice-card">
+            <div class="cassette" id="voiceCassette" aria-hidden="true">
+              <span class="cassette-label"></span>
+              <span class="cassette-window">
+                <i class="reel reel-left"></i>
+                <i class="tape-line"></i>
+                <i class="reel reel-right"></i>
+              </span>
+              <span class="cassette-screws"></span>
+            </div>
+            <div class="voice-content">
+              <p>เปิดฟังเสียงอวยพรของพี่ได้เลยยย</p>
+              <audio id="voiceAudio" controls preload="metadata">
+                <source src="assets/happy.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cake-section gift-section" id="cakeSection" aria-label="เป่าเค้กวันเกิด">
+        <div class="cake-shell">
+          <button class="back-button" type="button" data-back-to-hub>กลับไปเลือกของขวัญ</button>
+          <p class="section-kicker">Make a wish</p>
+          <h2>เป่าเทียนบนซอฟคุกกี้</h2>
+          <div class="cake-stage" id="cakeStage">
+            <div class="cake" aria-hidden="true">
+              <div class="candles">
+                <span class="candle"><i></i></span>
+                <span class="candle"><i></i></span>
+                <span class="candle"><i></i></span>
+                <span class="candle"><i></i></span>
+                <span class="candle"><i></i></span>
+              </div>
+              <div class="cake-top"></div>
+              <div class="cake-layer layer-one"></div>
+              <div class="cake-layer layer-two"></div>
+              <div class="cake-plate"></div>
+            </div>
+          </div>
+          <div class="wish-panel">
+            <textarea id="wishText" rows="4" placeholder="เขียนคำขอพรของน้องไว้ตรงนี้"></textarea>
+            <div class="cake-actions">
+              <button id="lightCandles" type="button">จุดไฟที่เทียน</button>
+              <button id="saveWish" type="button">ส่งคำขอพร</button>
+              <button id="blowCandles" type="button">เป่าเทียน</button>
+            </div>
+            <p class="wish-message" id="wishMessage">เขียนคำขอพร จุดเทียน แล้วค่อยเป่าเทียนนะ</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="music-widget" id="musicWidget" aria-label="เพลงประกอบวันเกิด">
+      <div class="music-disc" aria-hidden="true"></div>
+      <div class="music-meta">
+        <p class="music-title">wonderwall-oasis</p>
+        <p class="music-status" id="musicStatus">พร้อมเล่น</p>
+      </div>
+      <button class="music-icon-button" id="musicToggle" type="button" aria-label="เล่นหรือหยุดเพลง">เล่น</button>
+      <button class="music-icon-button" id="muteToggle" type="button" aria-label="ปิดหรือเปิดเสียง">เสียง</button>
+      <audio id="birthdayAudio" preload="auto" loop>
+        <source src="assets/Y2Mate.is - Wonderwall Remastered.mp3" type="audio/mpeg" />
+      </audio>
+    </aside>
+    <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+    <script src="script.js"></script>
+  </body>
+</html>
